@@ -11,10 +11,26 @@ def product(array):
     else:
         return 'There is no positive integer in array.'
 
-n=5
+while True:
+    try:
+        n=int(input('Enter size of array: '))
+        if n > 0:
+            break
+        else:
+            raise ValueError
+    except ValueError:
+        print('You must enter positive integer number as a size of array')
+    
 array = []
+print(f'Enter {n} integer elements of array: ')
 
 for i in range(n):
-    array.append(int(input()))
+    while True:
+        try:
+            array.append(int(input()))
+            break
+        except ValueError:
+           print('You must enter integer number as a element of array') 
   
 print('Product of numbers to the last positive number in array: ', product(array))
+
