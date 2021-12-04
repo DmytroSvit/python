@@ -10,11 +10,13 @@ from rest_framework import status, filters
 from .models import Advertisement
 from .serializers import AdvertisementSerializer
 from rest_framework.decorators import api_view
+from .pagination import CustomOffsetPagination
 
 
 class advertisement_list(ListAPIView):
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
+    pagination_class = CustomOffsetPagination
 
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     search_fields = ["start_date", "end_date", "id",
